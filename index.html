@@ -8,24 +8,54 @@
     <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rock+Salt&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/global.css" />
-    <title>Web App</title>
+    <title>Goblin Fighter</title>
 </head>
 
 <body>
     <header>
-        <img src="/assets/html_css_js.png">
-        <h1>Web App</h1>
+        <h1>Goblin Fighter</h1>
     </header>
 
     <main>
+        <section id="stats-section">
+            <div id="goblins-vanquished-div">
+                <p>You have vanquished 0 Goblins.</p>
+            </div>
+        </section>
 
+        <section id="player-section">
+            <div id="player-avatar-div">
+                <p class="player-avatar">🥷</p>
+            </div>
+            <div id="player-stats-div">
+                <p class="player-stats">10</p>
+                <span>HP</span>
+            </div>
+
+        </section>
+
+        <section id="matchup-section">
+            <p>Click on a Goblin to fight.</p>
+        </section>
+
+        <section id="goblins-section">
+            <form>
+                <p>Add a new Goblin to fight!</p>
+                <input placeholder="Enter Goblin Name">
+                <button id="add-goblin">Add</button>
+            </form>
+
+            <div class="goblin">BEJORKUS 🧟 6 HP</div>
+            <div class="goblin">GROOMF 🧟 8 HP</div>
+            <div class="goblin">FALYDOR 🧟 3 HP</div>
+
+        </section>
     </main>
 
-    <footer>&copy;2022 Software Developer</footer>
+    <footer></footer>
 
     <script type="module" src="app.js"></script>
 </body>

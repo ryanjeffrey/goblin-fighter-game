@@ -1,7 +1,10 @@
 :root {
-    --background: rgb(224, 234, 247);
-    --header-background: white;
-    --footer-background: rgb(243, 242, 242);
+    --background: white;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -10,26 +13,77 @@ body {
     background: var(--background);
     display: grid;
     grid-template-rows: auto 1fr auto;
+    text-align: center;
 }
 
 header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    background-color: var(--header-background);
+    text-align: center;
+    font-family: 'Rock Salt', cursive;
 }
 
 main {
+    font-family: 'Space Mono', monospace;
     padding: 20px;
+    display: grid;
+    grid-template-rows: .25fr 1fr;
+    gap: 20px
 }
 
-footer {
-    position: sticky;
-    bottom: 0;
-    padding: 7px 20px;
-    font-size: .8em;
+section {
+    border: 2px black solid;
+    
+}
+
+form {
+    margin: 20px;
+}
+
+input, button {
+    padding: 8px;
+    margin: 8px;
+}
+
+#stats-section {
+    grid-column-start: 1;
+    grid-column-end: 4;
     display: flex;
-    justify-content: flex-end;
-    background-color: var(--footer-background);
+    align-items: center;
+    justify-content: center;
+}
+#player-section,
+#matchup-section,
+#goblins-section {
+    grid-row: 2;
+    grid-template-columns: 1fr .25fr 1fr;
+}
+
+#player-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-stats {
+    font-size: 80px;
+}
+.player-stats span {
+    font-size: 40px;
+}
+.player-avatar {
+    font-size: 200px;
+}
+
+#matchup-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.goblin {
+    border: 1px black solid;
+    margin: 20px;
+    padding: 12px;
+    font-size: 24px;
+    cursor: pointer;
 }
