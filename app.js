@@ -41,9 +41,27 @@ let numberOfGoblinsVanquished = 0;
 let playerHealth = 10;
 
 // set event listeners 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+addGoblinFormEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(addGoblinFormEl);
+
+    // get user input
+    const userGoblinName = data.get('goblin-name-input');
+
+    // use user input to update state
+    const newGoblin = {
+        name: userGoblinName,
+        emoji: '🧟',
+        hp: Math.ceil(Math.random() * 6),
+    };
+
+    goblins.push(newGoblin);
+
+    addGoblinFormEl.reset();
+    // update DOM to reflect the new state
+    displayGoblins();
+});
 
 function displayGoblins() {
     goblinsDivEl.textContent = '';
