@@ -23,17 +23,17 @@ const mainSectionEl = document.querySelector('main');
 let goblins = [
     {
         name: 'Bejorkus',
-        emoji: '🧟',
+        emoji: '👹',
         hp: 6
     },
     {
         name: 'Groomf',
-        emoji: '🧟',
+        emoji: '👹',
         hp: 8
     },
     {
         name: 'Falydor',
-        emoji: '🧟',
+        emoji: '👹',
         hp: 3
     }
 ];
@@ -54,7 +54,7 @@ addGoblinFormEl.addEventListener('submit', (e) => {
     // use user input to update state
     const newGoblin = {
         name: userGoblinName,
-        emoji: '🧟',
+        emoji: '👹',
         hp: Math.ceil(Math.random() * 6),
     };
 
