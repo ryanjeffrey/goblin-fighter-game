@@ -44,3 +44,18 @@ let playerHealth = 10;
   // get user input
   // use user input to update state 
   // update DOM to reflect the new state
+
+function displayGoblins() {
+    for (let goblin of goblins) {
+        // goblinsDivEl.textContent = '';
+  
+        const goblinEl = document.createElement('div');
+        goblinEl.textContent = `${goblin.name} ${goblin.emoji} ${goblin.hp} hp`;
+      
+        goblinEl.classList.add('goblin');
+      
+        goblinsDivEl.append(goblinEl);
+    }
+}
+
+displayGoblins();
