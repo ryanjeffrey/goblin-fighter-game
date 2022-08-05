@@ -108,6 +108,14 @@ function displayGoblins() {
                     }
                 }
 
+                if (playerHealth === 2) {
+                    playerAvatarEl.textContent = '🤕';
+                }
+
+                if (playerHealth === 1) {
+                    playerAvatarEl.textContent = '🥴';
+                }
+
                 if (playerHealth === 0) {
                     playerAvatarEl.textContent = '☠️';
                     matchupMessageEl.textContent =
