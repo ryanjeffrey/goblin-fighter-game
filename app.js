@@ -15,6 +15,7 @@ const goblinsSectionEl = document.querySelector('#goblins-section');
 const addGoblinFormEl = document.querySelector('#add-goblin-form');
 const goblinNameInputEl = document.querySelector('#goblin-name-input');
 const addGoblinButton = document.querySelector('#add-goblin-button');
+const goblinsDivEl = document.querySelector('#goblins-div');
 
 // let state
 let goblins = [
