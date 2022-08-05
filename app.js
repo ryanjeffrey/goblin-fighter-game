@@ -46,8 +46,9 @@ let playerHealth = 10;
   // update DOM to reflect the new state
 
 function displayGoblins() {
+    goblinsDivEl.textContent = '';
+    
     for (let goblin of goblins) {
-        // goblinsDivEl.textContent = '';
   
         const goblinEl = document.createElement('div');
         goblinEl.textContent = `${goblin.name} ${goblin.emoji} ${goblin.hp} hp`;
