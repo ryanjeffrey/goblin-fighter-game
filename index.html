@@ -22,30 +22,30 @@
     <main>
         <section id="stats-section">
             <div id="goblins-vanquished-div">
-                <p>You have vanquished 0 Goblins.</p>
+                <p id="goblins-vanquished">You have vanquished 0 Goblins.</p>
             </div>
         </section>
 
         <section id="player-section">
             <div id="player-avatar-div">
-                <p class="player-avatar">🥷</p>
+                <p id="player-avatar">🥷</p>
             </div>
             <div id="player-stats-div">
-                <p class="player-stats">10</p>
+                <p id="player-stats">10</p>
                 <span>HP</span>
             </div>
 
         </section>
 
         <section id="matchup-section">
-            <p>Click on a Goblin to fight.</p>
+            <p id="matchup-message">Click on a Goblin to fight.</p>
         </section>
 
         <section id="goblins-section">
-            <form>
+            <form id="add-goblin-form">
                 <p>Add a new Goblin to fight!</p>
-                <input placeholder="Enter Goblin Name">
-                <button id="add-goblin">Add</button>
+                <input name="goblin-name-input" placeholder="Enter Goblin Name">
+                <button id="add-goblin-button">Add</button>
             </form>
 
             <div class="goblin">BEJORKUS 🧟 6 HP</div>

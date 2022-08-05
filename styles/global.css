@@ -63,13 +63,13 @@ input, button {
     justify-content: center;
 }
 
-.player-stats {
+#player-stats {
     font-size: 80px;
 }
-.player-stats span {
+#player-stats span {
     font-size: 40px;
 }
-.player-avatar {
+#player-avatar {
     font-size: 200px;
 }
 
