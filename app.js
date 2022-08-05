@@ -17,7 +17,25 @@ const goblinNameInputEl = document.querySelector('#goblin-name-input');
 const addGoblinButton = document.querySelector('#add-goblin-button');
 
 // let state
+let goblins = [
+    {
+        name: 'Bejorkus',
+        emoji: '🧟',
+        hp: 6
+    },
+    {
+        name: 'Groomf',
+        emoji: '🧟',
+        hp: 8
+    },
+    {
+        name: 'Falydor',
+        emoji: '🧟',
+        hp: 3
+    }
+];
 
+console.log(goblins);
 // set event listeners 
   // get user input
   // use user input to update state 
