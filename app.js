@@ -84,18 +84,39 @@ function displayGoblins() {
                     matchupMessageEl.textContent = `You hit ${goblin.name}!`;
                     matchupSectionEl.style.backgroundColor = 'yellowgreen';
                     goblin.hp--;
+                    
+                    resetMessage();
                 } else {
                     matchupMessageEl.textContent = `You missed ${goblin.name}.`;
                     matchupSectionEl.style.backgroundColor = 'yellow';
+
+                    resetMessage();
                 }
 
                 // logic for user damage
                 if (Math.random() < 0.5) {
-                    playerHealth--;
-                    playerStatsEl.textContent = playerHealth;
-                    alert(`${goblin.name} hit you.`);
+                    setTimeout(function() {
+                        playerHealth--;
+                        playerStatsEl.textContent = playerHealth;
+                        alert(`${goblin.name} hit you with a counter-attack.`);
+                        
+                        if (playerHealth <= 6 && playerHealth >= 4) {
+                            playerHpSpanEl.style.color = 'yellow';
+                        }
+                        if (playerHealth < 4) {
+                            playerHpSpanEl.style.color = 'tomato';
+                        }
+                        
+                        if (playerHealth <= 2) {
+                            playerAvatarEl.textContent = '🤕';
+                        }
+
+                        endGame();
+                    }, 800);
                 } else {
-                    alert(`${goblin.name} tried to hit you but missed!`);
+                    setTimeout(function() {
+                        alert(`${goblin.name} tried to hit you but missed!`);
+                    }, 800);
                 }
                 
                 if (goblin.hp === 0) {
@@ -109,28 +130,32 @@ function displayGoblins() {
                     }
                 }
 
-                if (playerHealth <= 6 && playerHealth >= 4) {
-                    playerHpSpanEl.style.color = 'yellow';
-                }
-                if (playerHealth < 4) {
-                    playerHpSpanEl.style.color = 'tomato';
-                }
 
-                if (playerHealth === 2 || playerHealth === 1) {
-                    playerAvatarEl.textContent = '🤕';
-                }
-
-                if (playerHealth === 0) {
-                    playerAvatarEl.textContent = '☠️';
-                    matchupMessageEl.textContent =
-                        'GAME OVER. The Goblins got the best of you. Reload the page to try again.';
-                    matchupSectionEl.style.backgroundColor = 'tomato';
-                    mainSectionEl.style.pointerEvents = 'none';
-                }
             }
-                
+            
             displayGoblins();
         });
+    }
+}
+
+function resetMessage() {
+    if (playerHealth > 0) {
+        setTimeout(function() {
+            matchupMessageEl.textContent = 'Click on a Goblin to fight.';
+            matchupSectionEl.style.backgroundColor = 'transparent';
+        }, 1000);
+    } else endGame();
+}
+
+function endGame() {
+    if (playerHealth === 0) {
+        setTimeout(function() {
+            playerAvatarEl.textContent = '☠️';
+            matchupMessageEl.textContent =
+                'GAME OVER. The Goblins got the best of you. Reload the page to try again.';
+            matchupSectionEl.style.backgroundColor = 'tomato';
+            mainSectionEl.style.pointerEvents = 'none';
+        }, 1200);
     }
 }
 
