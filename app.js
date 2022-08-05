@@ -85,6 +85,14 @@ function displayGoblins() {
                 matchupMessageEl.textContent = `You missed ${goblin.name}.`;
                 matchupSectionEl.style.backgroundColor = 'tomato';
             }
+
+            if (Math.random() < 0.5) {
+                playerHealth--;
+                playerStatsEl.textContent = playerHealth;
+                alert(`${goblin.name} hit you.`);
+            } else {
+                alert(`${goblin.name} tried to hit you but missed!`);
+            }
         });
     }
 }
