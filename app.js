@@ -5,6 +5,7 @@ const goblinsVanquishedEl = document.querySelector('#goblins-vanquished');
 
 const playerAvatarEl = document.querySelector('#player-avatar');
 const playerStatsEl = document.querySelector('#player-stats');
+const playerHpSpanEl = document.querySelector('span');
 
 const matchupSectionEl = document.querySelector('#matchup-section');
 const matchupMessageEl = document.querySelector('#matchup-message');
@@ -108,12 +109,15 @@ function displayGoblins() {
                     }
                 }
 
-                if (playerHealth === 2) {
-                    playerAvatarEl.textContent = '🤕';
+                if (playerHealth <= 6 && playerHealth >= 4) {
+                    playerHpSpanEl.style.color = 'yellow';
+                }
+                if (playerHealth < 4) {
+                    playerHpSpanEl.style.color = 'tomato';
                 }
 
-                if (playerHealth === 1) {
-                    playerAvatarEl.textContent = '🥴';
+                if (playerHealth === 2 || playerHealth === 1) {
+                    playerAvatarEl.textContent = '🤕';
                 }
 
                 if (playerHealth === 0) {
