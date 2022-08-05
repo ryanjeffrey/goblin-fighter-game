@@ -35,7 +35,10 @@ let goblins = [
     }
 ];
 
-console.log(goblins);
+let numberOfGoblinsVanquished = 0;
+
+let playerHealth = 10;
+
 // set event listeners 
   // get user input
   // use user input to update state 
