@@ -1,35 +1,29 @@
 // import functions and grab DOM elements
-const statsSectionEl = document.querySelector('#stats-section');
-const goblinsVanquishedDivEl = document.querySelector('#goblins-vanquished-div');
+const mainSectionEl = document.querySelector('main');
+
 const goblinsVanquishedEl = document.querySelector('#goblins-vanquished');
 
-const playerSectionEl = document.querySelector('#player-section');
-const playerAvatarDivEl = document.querySelector('#player-avatar-div');
 const playerAvatarEl = document.querySelector('#player-avatar');
 const playerStatsEl = document.querySelector('#player-stats');
 
 const matchupSectionEl = document.querySelector('#matchup-section');
 const matchupMessageEl = document.querySelector('#matchup-message');
 
-const goblinsSectionEl = document.querySelector('#goblins-section');
 const addGoblinFormEl = document.querySelector('#add-goblin-form');
-const goblinNameInputEl = document.querySelector('#goblin-name-input');
-const addGoblinButton = document.querySelector('#add-goblin-button');
 const goblinsDivEl = document.querySelector('#goblins-div');
 
-const mainSectionEl = document.querySelector('main');
 
 // let state
 let goblins = [
     {
         name: 'Bejorkus',
         emoji: '👹',
-        hp: 6
+        hp: 4
     },
     {
         name: 'Groomf',
         emoji: '👹',
-        hp: 8
+        hp: 5
     },
     {
         name: 'Horseclaw',
@@ -39,7 +33,7 @@ let goblins = [
     {
         name: 'Steve',
         emoji: '👹',
-        hp: 4
+        hp: 1
     }
 ];
 
