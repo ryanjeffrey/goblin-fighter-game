@@ -1,6 +1,4 @@
 // import functions and grab DOM elements
-const mainSectionEl = document.querySelector('main');
-
 const goblinsVanquishedEl = document.querySelector('#goblins-vanquished');
 
 const playerAvatarEl = document.querySelector('#player-avatar');
@@ -10,6 +8,7 @@ const playerHpSpanEl = document.querySelector('span');
 const matchupSectionEl = document.querySelector('#matchup-section');
 const matchupMessageEl = document.querySelector('#matchup-message');
 
+const goblinsSectionEl = document.querySelector('#goblins-section');
 const addGoblinFormEl = document.querySelector('#add-goblin-form');
 const goblinsDivEl = document.querySelector('#goblins-div');
 
@@ -111,12 +110,12 @@ function displayGoblins() {
                             playerAvatarEl.textContent = '🤕';
                         }
 
-                        endGame();
-                    }, 800);
+                        resetMessage();
+                    }, 600);
                 } else {
                     setTimeout(function() {
                         alert(`${goblin.name} tried to hit you but missed!`);
-                    }, 800);
+                    }, 600);
                 }
                 
                 if (goblin.hp === 0) {
@@ -143,7 +142,7 @@ function resetMessage() {
         setTimeout(function() {
             matchupMessageEl.textContent = 'Click on a Goblin to fight.';
             matchupSectionEl.style.backgroundColor = 'transparent';
-        }, 1000);
+        }, 700);
     } else endGame();
 }
 
@@ -151,10 +150,17 @@ function endGame() {
     if (playerHealth === 0) {
         setTimeout(function() {
             playerAvatarEl.textContent = '☠️';
-            matchupMessageEl.textContent =
-                'GAME OVER. The Goblins got the best of you. Reload the page to try again.';
+            matchupMessageEl.textContent = 'GAME OVER. The Goblins got the best of you.';
             matchupSectionEl.style.backgroundColor = 'tomato';
-            mainSectionEl.style.pointerEvents = 'none';
+            goblinsSectionEl.style.pointerEvents = 'none';
+
+            const playAgainButton = document.createElement('button');
+            playAgainButton.textContent = 'Play Again';
+            matchupSectionEl.append(playAgainButton);
+        
+            playAgainButton.addEventListener('click', () => {
+                window.location.reload();
+            });
         }, 1200);
     }
 }
