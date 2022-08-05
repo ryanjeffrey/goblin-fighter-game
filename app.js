@@ -76,23 +76,33 @@ function displayGoblins() {
         goblinsDivEl.append(goblinEl);
 
         goblinEl.addEventListener('click', () => {
-            if (Math.random() < .4) {
-                matchupMessageEl.textContent = `You hit ${goblin.name}!`;
-                matchupSectionEl.style.backgroundColor = 'yellowgreen';
-                goblin.hp--;
-                displayGoblins();
-            } else {
-                matchupMessageEl.textContent = `You missed ${goblin.name}.`;
-                matchupSectionEl.style.backgroundColor = 'tomato';
+            if (goblin.hp > 0) {
+                // logic for goblin damage
+                if (Math.random() < .4) {
+                    matchupMessageEl.textContent = `You hit ${goblin.name}!`;
+                    matchupSectionEl.style.backgroundColor = 'yellowgreen';
+                    goblin.hp--;
+                    displayGoblins();
+                } else {
+                    matchupMessageEl.textContent = `You missed ${goblin.name}.`;
+                    matchupSectionEl.style.backgroundColor = 'tomato';
+                }
+
+                // logic for user damage
+                if (Math.random() < 0.5) {
+                    playerHealth--;
+                    playerStatsEl.textContent = playerHealth;
+                    alert(`${goblin.name} hit you.`);
+                } else {
+                    alert(`${goblin.name} tried to hit you but missed!`);
+                }
+                
+                if (goblin.hp === 0) {
+                    numberOfGoblinsVanquished++;
+                    goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
+                }
             }
 
-            if (Math.random() < 0.5) {
-                playerHealth--;
-                playerStatsEl.textContent = playerHealth;
-                alert(`${goblin.name} hit you.`);
-            } else {
-                alert(`${goblin.name} tried to hit you but missed!`);
-            }
         });
     }
 }
