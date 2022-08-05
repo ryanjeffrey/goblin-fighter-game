@@ -79,9 +79,11 @@ function displayGoblins() {
             if (Math.random() < .4) {
                 matchupMessageEl.textContent = `You hit ${goblin.name}!`;
                 matchupSectionEl.style.backgroundColor = 'yellowgreen';
+                goblin.hp--;
+                displayGoblins();
             } else {
                 matchupMessageEl.textContent = `You missed ${goblin.name}.`;
-                matchupSectionEl.style.backgroundColor = 'tomato';  
+                matchupSectionEl.style.backgroundColor = 'tomato';
             }
         });
     }
