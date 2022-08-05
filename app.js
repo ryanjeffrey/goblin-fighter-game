@@ -74,6 +74,16 @@ function displayGoblins() {
         goblinEl.classList.add('goblin');
       
         goblinsDivEl.append(goblinEl);
+
+        goblinEl.addEventListener('click', () => {
+            if (Math.random() < .4) {
+                matchupMessageEl.textContent = `You hit ${goblin.name}!`;
+                matchupSectionEl.style.backgroundColor = 'yellowgreen';
+            } else {
+                matchupMessageEl.textContent = `You missed ${goblin.name}.`;
+                matchupSectionEl.style.backgroundColor = 'tomato';  
+            }
+        });
     }
 }
 
