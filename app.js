@@ -105,8 +105,13 @@ function displayGoblins() {
                 
                 if (goblin.hp === 0) {
                     numberOfGoblinsVanquished++;
-                    goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
                     goblin.emoji = '💀';
+
+                    if (numberOfGoblinsVanquished === 1) {
+                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblin.`;
+                    } else {
+                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
+                    }
                 }
 
                 if (playerHealth === 0) {
