@@ -5,7 +5,7 @@ const goblinsVanquishedEl = document.querySelector('#goblins-vanquished');
 
 const playerSectionEl = document.querySelector('#player-section');
 const playerAvatarDivEl = document.querySelector('#player-avatar-div');
-const playerAvatarEl = document.querySelector('#player-section');
+const playerAvatarEl = document.querySelector('#player-avatar');
 const playerStatsEl = document.querySelector('#player-stats');
 
 const matchupSectionEl = document.querySelector('#matchup-section');
@@ -16,6 +16,8 @@ const addGoblinFormEl = document.querySelector('#add-goblin-form');
 const goblinNameInputEl = document.querySelector('#goblin-name-input');
 const addGoblinButton = document.querySelector('#add-goblin-button');
 const goblinsDivEl = document.querySelector('#goblins-div');
+
+const mainSectionEl = document.querySelector('main');
 
 // let state
 let goblins = [
@@ -100,6 +102,14 @@ function displayGoblins() {
                     numberOfGoblinsVanquished++;
                     goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
                     goblin.emoji = '💀';
+                }
+
+                if (playerHealth === 0) {
+                    playerAvatarEl.textContent = '☠️';
+                    matchupMessageEl.textContent =
+                        'GAME OVER. The Goblins got the best of you. Reload the page to try again.';
+                    matchupSectionEl.style.backgroundColor = 'tomato';
+                    mainSectionEl.style.pointerEvents = 'none';
                 }
             }
                 
