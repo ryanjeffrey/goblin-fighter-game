@@ -82,7 +82,6 @@ function displayGoblins() {
                     matchupMessageEl.textContent = `You hit ${goblin.name}!`;
                     matchupSectionEl.style.backgroundColor = 'yellowgreen';
                     goblin.hp--;
-                    displayGoblins();
                 } else {
                     matchupMessageEl.textContent = `You missed ${goblin.name}.`;
                     matchupSectionEl.style.backgroundColor = 'tomato';
@@ -100,9 +99,11 @@ function displayGoblins() {
                 if (goblin.hp === 0) {
                     numberOfGoblinsVanquished++;
                     goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
+                    goblin.emoji = '💀';
                 }
             }
-
+                
+            displayGoblins();
         });
     }
 }
