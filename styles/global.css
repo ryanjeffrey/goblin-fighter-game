@@ -9,11 +9,13 @@
 
 body {
     height: 100vh;
-    font-family: 'Rubik', san-serif;
+    font-family: 'Space Mono', monospace;
     background: var(--background);
     display: grid;
     grid-template-rows: auto 1fr auto;
     text-align: center;
+    background-color: #F4D03F;
+    background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
 }
 
 header {
@@ -39,13 +41,20 @@ form {
 }
 
 input, button {
-    padding: 8px;
+    padding: 12px;
     margin: 8px;
+    border-radius: 16px;
+    border: none;
+}
+
+button {
+    box-shadow: 4px 4px;
+    background-image: linear-gradient( 135deg, #FF9D6C 10%, #BB4E75 100%);
 }
 
 #stats-section {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,6 +86,7 @@ input, button {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
 }
 
 
@@ -87,4 +97,5 @@ input, button {
     font-size: 24px;
     cursor: pointer;
     text-transform: uppercase;
+    background-image: linear-gradient( 135deg, #FF9D6C 10%, #BB4E75 100%);
 }

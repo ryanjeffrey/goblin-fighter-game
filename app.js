@@ -32,9 +32,14 @@ let goblins = [
         hp: 8
     },
     {
-        name: 'Falydor',
+        name: 'Horseclaw',
         emoji: '👹',
         hp: 3
+    },
+    {
+        name: 'Steve',
+        emoji: '👹',
+        hp: 4
     }
 ];
 
@@ -86,7 +91,7 @@ function displayGoblins() {
                     goblin.hp--;
                 } else {
                     matchupMessageEl.textContent = `You missed ${goblin.name}.`;
-                    matchupSectionEl.style.backgroundColor = 'tomato';
+                    matchupSectionEl.style.backgroundColor = 'yellow';
                 }
 
                 // logic for user damage
