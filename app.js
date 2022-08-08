@@ -68,73 +68,76 @@ function displayGoblins() {
     goblinsDivEl.textContent = '';
     
     for (let goblin of goblins) {
-  
-        const goblinEl = document.createElement('div');
-        goblinEl.textContent = `${goblin.name} ${goblin.emoji} ${goblin.hp} hp`;
-      
-        goblinEl.classList.add('goblin');
-      
-        goblinsDivEl.append(goblinEl);
-
-        goblinEl.addEventListener('click', () => {
-            if (goblin.hp > 0) {
-                // logic for goblin damage
-                if (Math.random() < .4) {
-                    matchupMessageEl.textContent = `You hit ${goblin.name}!`;
-                    matchupSectionEl.style.backgroundColor = 'yellowgreen';
-                    goblin.hp--;
-                    
-                    resetMessage();
-                } else {
-                    matchupMessageEl.textContent = `You missed ${goblin.name}.`;
-                    matchupSectionEl.style.backgroundColor = 'yellow';
-
-                    resetMessage();
-                }
-
-                // logic for user damage
-                if (Math.random() < 0.5) {
-                    setTimeout(function() {
-                        playerHealth--;
-                        playerStatsEl.textContent = playerHealth;
-                        alert(`${goblin.name} hit you with a counter-attack.`);
-                        
-                        if (playerHealth <= 6 && playerHealth >= 4) {
-                            playerHpSpanEl.style.color = 'yellow';
-                        }
-                        if (playerHealth < 4) {
-                            playerHpSpanEl.style.color = 'tomato';
-                        }
-                        
-                        if (playerHealth <= 2) {
-                            playerAvatarEl.textContent = '🤕';
-                        }
-
-                        resetMessage();
-                    }, 600);
-                } else {
-                    setTimeout(function() {
-                        alert(`${goblin.name} tried to hit you but missed!`);
-                    }, 600);
-                }
-                
-                if (goblin.hp === 0) {
-                    numberOfGoblinsVanquished++;
-                    goblin.emoji = '💀';
-
-                    if (numberOfGoblinsVanquished === 1) {
-                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblin.`;
-                    } else {
-                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
-                    }
-                }
-
-
-            }
-            
-            displayGoblins();
-        });
+        renderGoblin(goblin);
     }
+}
+
+function renderGoblin(goblin) {
+    const goblinEl = document.createElement('div');
+    goblinEl.textContent = `${goblin.name} ${goblin.emoji} ${goblin.hp} hp`;
+
+    goblinEl.classList.add('goblin');
+
+    goblinsDivEl.append(goblinEl);
+
+    goblinEl.addEventListener('click', () => {
+        if (goblin.hp > 0) {
+            // logic for goblin damage
+            if (Math.random() < 0.4) {
+                matchupMessageEl.textContent = `You hit ${goblin.name}!`;
+                matchupSectionEl.style.backgroundColor = 'yellowgreen';
+                goblin.hp--;
+
+                resetMessage();
+            } else {
+                matchupMessageEl.textContent = `You missed ${goblin.name}.`;
+                matchupSectionEl.style.backgroundColor = 'yellow';
+
+                resetMessage();
+            }
+
+            // logic for user damage
+            if (Math.random() < 0.5) {
+                setTimeout(function() {
+                    playerHealth--;
+                    playerStatsEl.textContent = playerHealth;
+                    alert(`${goblin.name} hit you with a counter-attack.`);
+
+                    if (playerHealth <= 6 && playerHealth >= 4) {
+                        playerHpSpanEl.style.color = 'yellow';
+                    }
+                    if (playerHealth < 4) {
+                        playerHpSpanEl.style.color = 'tomato';
+                    }
+
+                    if (playerHealth <= 2) {
+                        playerAvatarEl.textContent = '🤕';
+                    }
+
+                    resetMessage();
+                }, 600);
+            } else {
+                setTimeout(function() {
+                    alert(`${goblin.name} tried to hit you but missed!`);
+                }, 600);
+            }
+
+            if (goblin.hp === 0) {
+                numberOfGoblinsVanquished++;
+                goblin.emoji = '💀';
+
+                if (numberOfGoblinsVanquished === 1) {
+                    goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblin.`;
+                } else {
+                    goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
+                }
+            }
+        }
+
+        displayGoblins();
+
+        return goblinEl;
+    });
 }
 
 function resetMessage() {
