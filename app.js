@@ -117,11 +117,9 @@ function displayGoblins() {
                     numberOfGoblinsVanquished++;
                     goblin.emoji = '💀';
 
-                    if (numberOfGoblinsVanquished === 1) {
-                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblin.`;
-                    } else {
-                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
-                    }
+                    goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} ${
+                        numberOfGoblinsVanquished === 1 ? 'Goblin' : 'Goblins'
+                    }.`;
                 }
             }
 
