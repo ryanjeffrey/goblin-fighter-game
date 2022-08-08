@@ -12,36 +12,35 @@ const goblinsSectionEl = document.querySelector('#goblins-section');
 const addGoblinFormEl = document.querySelector('#add-goblin-form');
 const goblinsDivEl = document.querySelector('#goblins-div');
 
-
 // let state
 let goblins = [
     {
         name: 'Bejorkus',
         emoji: '👹',
-        hp: 4
+        hp: 4,
     },
     {
         name: 'Groomf',
         emoji: '👹',
-        hp: 5
+        hp: 5,
     },
     {
         name: 'Horseclaw',
         emoji: '👹',
-        hp: 3
+        hp: 3,
     },
     {
         name: 'Steve',
         emoji: '👹',
-        hp: 1
-    }
+        hp: 1,
+    },
 ];
 
 let numberOfGoblinsVanquished = 0;
 
 let playerHealth = 10;
 
-// set event listeners 
+// set event listeners
 addGoblinFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -66,9 +65,68 @@ addGoblinFormEl.addEventListener('submit', (e) => {
 
 function displayGoblins() {
     goblinsDivEl.textContent = '';
-    
+
     for (let goblin of goblins) {
-        renderGoblin(goblin);
+        const goblinEl = renderGoblin(goblin);
+
+        goblinsDivEl.append(goblinEl);
+
+        goblinEl.addEventListener('click', () => {
+            if (goblin.hp > 0) {
+                // logic for goblin damage
+                if (Math.random() < 0.4) {
+                    matchupMessageEl.textContent = `You hit ${goblin.name}!`;
+                    matchupSectionEl.style.backgroundColor = 'yellowgreen';
+                    goblin.hp--;
+
+                    resetMessage();
+                } else {
+                    matchupMessageEl.textContent = `You missed ${goblin.name}.`;
+                    matchupSectionEl.style.backgroundColor = 'yellow';
+
+                    resetMessage();
+                }
+
+                // logic for user damage
+                if (Math.random() < 0.5) {
+                    setTimeout(function() {
+                        playerHealth--;
+                        playerStatsEl.textContent = playerHealth;
+                        alert(`${goblin.name} hit you with a counter-attack.`);
+
+                        if (playerHealth <= 6 && playerHealth >= 4) {
+                            playerHpSpanEl.style.color = 'yellow';
+                        }
+                        if (playerHealth < 4) {
+                            playerHpSpanEl.style.color = 'tomato';
+                        }
+
+                        if (playerHealth <= 2) {
+                            playerAvatarEl.textContent = '🤕';
+                        }
+
+                        resetMessage();
+                    }, 600);
+                } else {
+                    setTimeout(function() {
+                        alert(`${goblin.name} tried to hit you but missed!`);
+                    }, 600);
+                }
+
+                if (goblin.hp === 0) {
+                    numberOfGoblinsVanquished++;
+                    goblin.emoji = '💀';
+
+                    if (numberOfGoblinsVanquished === 1) {
+                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblin.`;
+                    } else {
+                        goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
+                    }
+                }
+            }
+
+            displayGoblins();
+        });
     }
 }
 
@@ -78,66 +136,7 @@ function renderGoblin(goblin) {
 
     goblinEl.classList.add('goblin');
 
-    goblinsDivEl.append(goblinEl);
-
-    goblinEl.addEventListener('click', () => {
-        if (goblin.hp > 0) {
-            // logic for goblin damage
-            if (Math.random() < 0.4) {
-                matchupMessageEl.textContent = `You hit ${goblin.name}!`;
-                matchupSectionEl.style.backgroundColor = 'yellowgreen';
-                goblin.hp--;
-
-                resetMessage();
-            } else {
-                matchupMessageEl.textContent = `You missed ${goblin.name}.`;
-                matchupSectionEl.style.backgroundColor = 'yellow';
-
-                resetMessage();
-            }
-
-            // logic for user damage
-            if (Math.random() < 0.5) {
-                setTimeout(function() {
-                    playerHealth--;
-                    playerStatsEl.textContent = playerHealth;
-                    alert(`${goblin.name} hit you with a counter-attack.`);
-
-                    if (playerHealth <= 6 && playerHealth >= 4) {
-                        playerHpSpanEl.style.color = 'yellow';
-                    }
-                    if (playerHealth < 4) {
-                        playerHpSpanEl.style.color = 'tomato';
-                    }
-
-                    if (playerHealth <= 2) {
-                        playerAvatarEl.textContent = '🤕';
-                    }
-
-                    resetMessage();
-                }, 600);
-            } else {
-                setTimeout(function() {
-                    alert(`${goblin.name} tried to hit you but missed!`);
-                }, 600);
-            }
-
-            if (goblin.hp === 0) {
-                numberOfGoblinsVanquished++;
-                goblin.emoji = '💀';
-
-                if (numberOfGoblinsVanquished === 1) {
-                    goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblin.`;
-                } else {
-                    goblinsVanquishedEl.textContent = `You have vanquished ${numberOfGoblinsVanquished} Goblins.`;
-                }
-            }
-        }
-
-        displayGoblins();
-
-        return goblinEl;
-    });
+    return goblinEl;
 }
 
 function resetMessage() {
@@ -160,7 +159,7 @@ function endGame() {
             const playAgainButton = document.createElement('button');
             playAgainButton.textContent = 'Play Again';
             matchupSectionEl.append(playAgainButton);
-        
+
             playAgainButton.addEventListener('click', () => {
                 window.location.reload();
             });
